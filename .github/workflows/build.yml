@@ -37,10 +37,10 @@ jobs:
           dir build\.dep-cache\utpp\include
           if exist "build\.dep-cache\utpp\include\utpp\utpp.h" (echo Found utpp.h) else (echo utpp.h not found)
 
-      - name: Create symlink for utpp
+      - name: Copy utpp directory (symlink gets deleted by build system)
         shell: cmd
         run: |
-          mklink /D build\.dep-cache\utpp-repo-src build\.dep-cache\utpp
+          xcopy /E /I build\.dep-cache\utpp build\.dep-cache\utpp-repo-src
 
       - name: Build and run tests
         shell: cmd
