@@ -1,0 +1,24 @@
+If:
+  PathMatch: .*\.in
+
+CompileFlags:
+  Remove:
+    - -Wall
+    - -Wextra
+    - -Wpedantic
+
+Diagnostics:
+  Suppress:
+    - "*"
+
+---
+
+CompileFlags:
+  Add:
+    - -Wall
+    - -Wextra
+    - -Wpedantic
+    # Force .h files to be treated as C++
+    - -xc++
+    # Ensure we're using C++20 like the build system
+    - -std=c++20

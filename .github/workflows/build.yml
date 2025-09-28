@@ -11,17 +11,17 @@ permissions:
 jobs:
   build:
     runs-on: windows-latest
-    
-    steps:      
+
+    steps:
       - name: Get CPM
         uses: neacsum/configurator@v0.0.11
         with:
           name: cpm.exe
           url: https://github.com/neacsum/cpm/releases/latest/download/cpm.exe
-      
+
       - name: Build libraries
         run: cpm -v --proto https -u https://github.com/neacsum/utf8.git -r $HOME utf8
-        
+
       - name: Build and run tests
         shell: cmd
         run: |
@@ -32,4 +32,3 @@ jobs:
         with:
           name: test_results
           path: ~/utf8/build/exe/x64/debug/utf8_tests.xml
-
