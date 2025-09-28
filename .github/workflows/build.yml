@@ -27,40 +27,23 @@ jobs:
         run: |
           if not exist "build\.dep-cache" mkdir "build\.dep-cache"
 
-      - name: Build dependencies
+      - name: Download dependencies
         run: cpm -v --proto https -r build\.dep-cache
 
-      - name: Debug directory structure
-        shell: cmd
-        run: |
-          dir build\.dep-cache\utpp
-          dir build\.dep-cache\utpp\include
-          if exist "build\.dep-cache\utpp\include\utpp\utpp.h" (echo Found utpp.h) else (echo utpp.h not found)
-
-      - name: Copy utpp directory (symlink gets deleted by build system)
+      - name: Copy utpp directory
         shell: cmd
         run: |
           xcopy /E /I build\.dep-cache\utpp build\.dep-cache\utpp-repo-src
+
+      - name: Build library (local version, not from CPM)
+        shell: cmd
+        run: |
+          build.bat lib
 
       - name: Build and run tests
         shell: cmd
         run: |
           build.bat tests
-
-      - name: Debug filesystem state after build failure
-        if: failure()
-        shell: cmd
-        run: |
-          echo "=== Checking symlink status ==="
-          dir build\.dep-cache\utpp-repo-src
-          echo "=== Checking include directory ==="
-          dir build\.dep-cache\utpp-repo-src\include
-          echo "=== Checking utpp subdirectory ==="
-          dir build\.dep-cache\utpp-repo-src\include\utpp
-          echo "=== Checking for utpp.h file ==="
-          if exist "build\.dep-cache\utpp-repo-src\include\utpp\utpp.h" (echo Found via symlink) else (echo NOT found via symlink)
-          echo "=== Checking original utpp directory ==="
-          dir build\.dep-cache\utpp\include\utpp
 
       - name: Save tests result
         uses: actions/upload-artifact@v4
