@@ -36,12 +36,12 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 add_subdirectory(src)
 add_subdirectory(include)
 
-set(BUILD_TESTS TRUE CACHE BOOL "Build tests")
+set(BUILD_TESTS FALSE CACHE BOOL "Build tests")
 if (BUILD_TESTS)
   add_subdirectory(tests)
 endif ()
 
-set(BUILD_EXAMPLES TRUE CACHE BOOL "Build examples")
+set(BUILD_EXAMPLES FALSE CACHE BOOL "Build examples")
 if (BUILD_EXAMPLES)
   add_subdirectory(examples)
 endif ()
