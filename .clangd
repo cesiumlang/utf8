@@ -18,9 +18,14 @@ CompileFlags:
     - -Wall
     - -Wextra
     - -Wpedantic
+
+    # The empty compile_flags.txt in the root directory causes clangd to treat
+    # these paths as relative to the root of the project when compile_commands.json
+    # is not present.
     - -Ibuild/.dep-cache/utpp-repo-src/include/.
     - -Iinclude/.
     - -Itests/.
+
     - -xc++  # Force .h files to be treated as C++
     # - -std=gnu++17
     - -std=c++20

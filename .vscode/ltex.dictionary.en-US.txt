@@ -1,6 +1,7 @@
 asmx
 basecvt
 casecvt
+clangd
 codept
 cppcheck
 endl
