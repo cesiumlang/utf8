@@ -23,7 +23,12 @@ jobs:
           url: https://github.com/neacsum/cpm/releases/latest/download/cpm.exe
 
       - name: Build dependencies
-        run: cpm -v --proto https -r $HOME
+        run: cpm -v --proto https -r build\.dep-cache
+
+      - name: Create symlink for utpp
+        shell: cmd
+        run: |
+          mklink /D build\.dep-cache\utpp-repo-src build\.dep-cache\utpp
 
       - name: Build and run tests
         shell: cmd
