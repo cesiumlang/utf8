@@ -61,3 +61,4 @@ wsubkey
 wval
 wvalue
 wvar
+xcopy

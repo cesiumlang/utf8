@@ -28,7 +28,7 @@ jobs:
           if not exist "build\.dep-cache" mkdir "build\.dep-cache"
 
       - name: Download dependencies
-        run: cpm -v --proto https -r build\.dep-cache
+        run: cpm -v -f --proto https -r build\.dep-cache
 
       - name: Copy utpp directory
         shell: cmd
