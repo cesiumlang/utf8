@@ -19,3 +19,5 @@
 /utf8.cppcheck
 /docs
 /.DS_Store
+.cache/
+/compile_commands.json

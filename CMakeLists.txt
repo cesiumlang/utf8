@@ -23,6 +23,7 @@ endif()
 ## proj src dir is location of this file
 list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 include(ConfigFetchContent)
+include(CompileCommands)
 # include dependencies
 include(utpp)
 

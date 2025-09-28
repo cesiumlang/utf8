@@ -11,7 +11,7 @@
 		},
     "files.insertFinalNewline": true,
     "clangd.arguments": [
-      "--compile-commands-dir=${workspaceFolder}/build/x64-clang"
+      // "--compile-commands-dir=${workspaceFolder}"
     ],
     "cmake.configureOnOpen": true,
     "cmake.configureOnEdit": true,
@@ -19,7 +19,7 @@
     "cmake.launchBehavior": "breakAndReuseTerminal",
     "lldb.verboseLogging": true,
     "lldb.useNativePDBReader": true,
-    // "cmake.copyCompileCommands": ${workspaceFolder}/build
+    "cmake.copyCompileCommands": "${workspaceFolder}/compile_commands.json"
   },
   "extensions": {
     // See http://go.microsoft.com/fwlink/?LinkId=827846
