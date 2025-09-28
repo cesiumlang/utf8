@@ -30,6 +30,13 @@ jobs:
       - name: Build dependencies
         run: cpm -v --proto https -r build\.dep-cache
 
+      - name: Debug directory structure
+        shell: cmd
+        run: |
+          dir build\.dep-cache\utpp
+          dir build\.dep-cache\utpp\include
+          if exist "build\.dep-cache\utpp\include\utpp\utpp.h" (echo Found utpp.h) else (echo utpp.h not found)
+
       - name: Create symlink for utpp
         shell: cmd
         run: |
