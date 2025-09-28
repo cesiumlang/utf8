@@ -22,6 +22,11 @@ jobs:
           name: cpm.exe
           url: https://github.com/neacsum/cpm/releases/latest/download/cpm.exe
 
+      - name: Create dependencies directory
+        shell: cmd
+        run: |
+          if not exist "build\.dep-cache" mkdir "build\.dep-cache"
+
       - name: Build dependencies
         run: cpm -v --proto https -r build\.dep-cache
 
