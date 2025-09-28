@@ -13,6 +13,7 @@
 !/.vscode/
 /.vscode/*
 !/.vscode/ltex.dictionary.en-US.txt
+!/.vscode/ltex.hiddenFalsePositives.en-US.txt
 /lib
 /.editorconfig
 /utf8.cppcheck

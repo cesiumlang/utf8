@@ -4,6 +4,12 @@ target_sources(${PROJECT_NAME} PRIVATE
   utf8.cpp
 )
 
+# Set up dependency for casecvt.cpp on generated headers
+add_dependencies(${PROJECT_NAME} gen_casetab)
+set_source_files_properties(casecvt.cpp PROPERTIES
+  OBJECT_DEPENDS "${PROJECT_SOURCE_DIR}/include/uppertab.h;${PROJECT_SOURCE_DIR}/include/lowertab.h"
+)
+
 # Windows specific stuff
 if (${CMAKE_SYSTEM_NAME} STREQUAL "Windows")
   target_sources(${PROJECT_NAME} PRIVATE
